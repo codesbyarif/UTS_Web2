@@ -1,17 +1,19 @@
 <?php
 
 $koneksi = mysqli_connect("localhost","root","","informasi");
-function query ($query){
-    global $koneksi;
-    $result = mysqli_query($koneksi,$query);
+
+
+function query($query) {
+    $result = mysqli_query($GLOBALS['koneksi'], $query);
+
     $rows = [];
-    while ($row = mysqli_fetch_assoc($result)){
+    while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
     }
+
+
     return $rows;
-
 }
-
 function tambah($data){
     global $koneksi;
     $nama = htmlspecialchars($data["nama"]);
